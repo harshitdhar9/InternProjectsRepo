@@ -38,4 +38,4 @@ input_data_encoded = input_data_encoded.reindex(columns=X_train.columns, fill_va
 prediction = dtree.predict(input_data_encoded)
 
 # Print the prediction
-print(prediction[0])
+print("The estimate house price is: ",prediction[0])
