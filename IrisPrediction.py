@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-iris_data=pd.read_csv('Datasets/Iris.csv')
+iris_data=pd.read_csv('Projects\Iris.csv')
 
 iris_data.head()
 iris_data.shape
@@ -11,13 +11,13 @@ iris_data.dtypes
 iris_data.info()
 
 iris_data.drop(columns='Id')
-iris.describe().T
+iris_data.describe().T
 
-iris.isnull().sum()
+iris_data.isnull().sum()
 
 from sklearn.preprocessing import LabelEncoder
 label=LabelEncoder()
-iris_Species=label.fit_transform(iris_Species)
+iris_data.Species=label.fit_transform(iris_data.Species)
 
 corr=iris_data.corr()
 sns.heatmap(corr,cmap='coolwarm',annot=True)
@@ -25,7 +25,7 @@ plt.show()
 
 hue_mapping = {0: 'Setosa', 1: 'Versicolor', 2: 'Virginica'}
 iris_data['Species'] = iris_data['Species'].map(hue_mapping)
-sns.pairplot(iris, hue='Species', diag_kind='kde')
+sns.pairplot(iris_data, hue='Species', diag_kind='kde')
 plt.show()
 
 #Model Training
@@ -68,4 +68,7 @@ plt.ylabel("Score")
 plt.title("Cross-Validation Scores")
 plt.show()
 mean_score = scores.mean()
+
+print("Cross-Validation Scores:", scores)
+print("Mean Score:", mean_score)
 
